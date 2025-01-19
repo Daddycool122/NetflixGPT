@@ -2,6 +2,9 @@
 
  - vite@latest
  - Configured Tailwind CSS
+ - Header
+ - Login Form
+ - Sign Up form
 
 # Features
  - Login/Sign Up
