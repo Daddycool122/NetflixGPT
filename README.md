@@ -3,8 +3,19 @@
  - vite@latest
  - Configured Tailwind CSS
  - Header
+ - Routin of App
  - Login Form
  - Sign Up form
+ - Form Validation
+ - useRef
+ - Firebase Setup
+ - Deploying app to  production
+ - Create Sign up in firebase
+ - Implemented Sign in user API
+ - Created Redux store with userSlices
+ - Implemented Signout
+ - Update profile API call
+ 
 
 # Features
  - Login/Sign Up
