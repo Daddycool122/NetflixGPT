@@ -3,16 +3,15 @@ import Header from './Header'
 import { checkValidData } from '../utils/validate';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword,updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import { BG_IMG, USER_AVATAR } from '../utils/constants';
 
 function Login() {
   const [isSignInForm,setIsSignInForm]= useState(true);
   const [errorMessage,setErrorMessage]= useState(null);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const email = useRef(null);
   const password = useRef(null);
   const username = useRef(null);
@@ -43,7 +42,7 @@ function Login() {
       // Signed up 
         const user = userCredential.user;
         updateProfile(user, {
-          displayName: username.current.value, photoURL: "https://avatars.githubusercontent.com/u/122301306?s=400&v=4"
+          displayName: username.current.value, photoURL: USER_AVATAR
         }).then(() => {
           // Profile updated!
           // ...
@@ -52,7 +51,7 @@ function Login() {
                                       email:email,
                                       displayName:displayName,
                                       photoURL:photoURL}));
-          navigate('/browse')
+          
         }).catch((error) => {
           // An error occurred
           // ...
@@ -75,7 +74,6 @@ function Login() {
         // Signed in 
         const user = userCredential.user;
         console.log(user);
-        navigate('/browse');
         // ...
   })
         .catch((error) => {
@@ -99,7 +97,7 @@ function Login() {
     <div className="">
       <Header/>
       <div className='absolute'>
-      <img src="https://assets.nflxext.com/ffe/siteui/vlv3/e3e9c31f-aa15-4a8f-8059-04f01e6b8629/web/IN-en-20250113-TRIFECTA-perspective_febfa442-23d9-45f3-937e-72f8b971f7a9_large.jpg" alt="" />
+      <img src={BG_IMG} alt="" />
       </div>
 
 

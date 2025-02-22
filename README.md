@@ -3,7 +3,7 @@
  - vite@latest
  - Configured Tailwind CSS
  - Header
- - Routin of App
+ - Routing of App
  - Login Form
  - Sign Up form
  - Form Validation
@@ -15,7 +15,13 @@
  - Created Redux store with userSlices
  - Implemented Signout
  - Update profile API call
- 
+ - Bug Fix: Signup user display name and profile picture update
+ - Bug Fix: If user is not logged in and tries to use /browse , redirect him to login page and  
+   vice versa
+ - Unsubscribe to the onAuthStateChanged callback
+ - Add Hardcoded values to constant files
+ - register TMDB API and create an app and get access token
+ - Get data from TMDB now playing movies list API
 
 # Features
  - Login/Sign Up
