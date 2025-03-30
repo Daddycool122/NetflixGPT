@@ -1,4 +1,5 @@
 import {Provider} from 'react-redux'
+import React from 'react'
 import Body from './components/Body'
 import appStore from './utils/appStore'
 function App() {
@@ -8,6 +9,8 @@ function App() {
     <Provider store={appStore}>
       <Body/>
       </Provider>
+    {/* <React.StrictMode> */}
+    
     </>
   )
 }
