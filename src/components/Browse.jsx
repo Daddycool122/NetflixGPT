@@ -8,22 +8,29 @@ import SecondaryContainer from './SecondaryContainer';
 import GptSearch from './GptSearch'
 import { useSelector } from 'react-redux'
 
+
 const Browse = () => {
-  const showGptSearch = useSelector(store => store.gpt.showGptSearch);
+  const showGptSearch = useSelector(store=> store.gpt.showGptSearch);
   useNowPlayingMovies();
   usePopularMovies();
   useAiringTodayMovies();
   useTopRatedMovies();
   return (
-    <div className="min-h-screen ">
+    <div className=''>
       <Header />
-      {showGptSearch?<GptSearch  />:
-      <>
-      <MainContainer />
-      <SecondaryContainer />
-      </>
-      }
+      {showGptSearch&&<GptSearch/>}
+      <MainContainer/>
+      <SecondaryContainer/>
       
+      {/*
+        Main Container
+          - VideoBackground
+          - VideoTitle
+        SecondaryContainer
+          - MoviesList * n
+          - cards * n
+      
+      */}
     </div>
   )
 }
