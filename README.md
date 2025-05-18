@@ -36,7 +36,10 @@
  - TMDB IMAGE CDN URL
  - Browse Page Appealing
  - usePopularMovies Custom hook
- - GPT search feature
+ - GPT search Page
+ - GPT search Bar
+ - (*BONUS) Multi language feature
+ - Integrate GPT APIs(get OpenAI key)
 
 # Features
  - Login/Sign Up
