@@ -15,11 +15,11 @@ const Browse = () => {
   useAiringTodayMovies();
   useTopRatedMovies();
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen ">
       <Header />
       {showGptSearch && <GptSearch />}
-      <MainContainer />
-      <SecondaryContainer />
+      {!showGptSearch&&<MainContainer />}
+      {!showGptSearch&&<SecondaryContainer />}
     </div>
   )
 }

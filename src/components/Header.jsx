@@ -6,13 +6,19 @@ import { addUser, removeUser } from '../utils/userSlice'
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { LOGO } from "../utils/constants";
+import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
 import { toggleGptSearchView } from "../utils/gptSlice";
+import { changeLanguage } from "../utils/configSlics"; 
+
 
 function Header() {
   const navigate = useNavigate();
   const user = useSelector(store => store.user);
+  const gpt = useSelector(store => store.gpt);
   const dispatch = useDispatch();
+
+  
+  
 
   const handleSignOut = () => {
     signOut(auth).then(() => {
@@ -25,6 +31,12 @@ function Header() {
 
   const handleGptSearchClick = () => {
     dispatch(toggleGptSearchView())
+  }
+
+  const handleLanguageChange = (e) => {
+
+    const selectedLanguage = e.target.value;
+    dispatch(changeLanguage(selectedLanguage));
   }
 
   useEffect(() => {
@@ -47,16 +59,21 @@ function Header() {
       <img className="w-32 md:w-44" src={LOGO} alt="Logo" />
       {user && (
         <div className="flex items-center space-x-2 md:space-x-4 mt-2 md:mt-0">
+          {gpt.showGptSearch&&<select className="bg-gray-800 text-white py-1 px-2 md:py-2 md:px-4 rounded-lg text-sm md:text-base" onChange={handleLanguageChange}>
+            {SUPPORTED_LANGUAGES.map(language => <option key={language.identfier} value={language.identfier} >{language.name}</option>)}
+          </select>}
+
+          <img className="w-8 h-8 md:w-12 md:h-12 rounded" src={user.photoURL} alt="userIcon" />
           <button
             onClick={handleGptSearchClick}
             className="py-1 px-3 md:py-2 md:px-4 bg-purple-800 text-white rounded-xl text-sm md:text-base"
           >
-            GPT Search
+            {gpt.showGptSearch?"Home Page":"GPT Search"}
           </button>
-          <img className="w-8 h-8 md:w-12 md:h-12 rounded" src={user.photoURL} alt="userIcon" />
+          
           <button
             onClick={handleSignOut}
-            className="font-bold text-white text-sm md:text-base"
+            className=" text-white text-sm md:text-base bg-red-500 p-2 rounded-xl"
           >
             Sign Out
           </button>
