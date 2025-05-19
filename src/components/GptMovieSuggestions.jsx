@@ -20,7 +20,7 @@ const GptMovieSuggestions = () => {
             <MovieList
               key={movie}
               title={movie}
-              movies={geminiMovies && geminiMovies[index] ? geminiMovies[index] : []}
+              movies={geminiMovies  ? geminiMovies[index] : []}
             />
           ))}
         </div>
