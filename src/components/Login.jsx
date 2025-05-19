@@ -38,7 +38,7 @@ function Login() {
             photoURL: USER_AVATAR
           }).then(() => {
             const { uid, email, displayName, photoURL } = auth.currentUser;
-            dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }));
+            dispatch(addUser({ uid, email, displayName, photoURL }));
           }).catch((error) => {
             setErrorMessage(error.message);
           });
@@ -61,87 +61,104 @@ function Login() {
   }
 
   return (
-    <div className="min-h-screen relative">
+    <div className="h-screen flex flex-col overflow-hidden">
       <Header />
-      <div className="absolute inset-0">
-        <img src={BG_IMG} alt="Background" className="w-full h-full object-cover" />
-      </div>
-      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-      <form
-        onSubmit={(e) => e.preventDefault()}
-        className="relative z-10 mx-auto mt-24 md:mt-40 w-11/12 md:w-1/3 max-w-md bg-black bg-opacity-80 p-6 md:p-8 rounded-lg text-white"
-      >
-        <h1 className="text-2xl md:text-3xl font-bold mb-4">
-          {isSignInForm ? "Sign In" : "Sign Up"}
-        </h1>
-        {!isSignInForm && (
-          <input
-            ref={username}
-            type="text"
-            placeholder="Username"
-            className="w-full p-3 mb-4 bg-gray-700 rounded-lg text-white"
-            required
+      
+      <div className="flex-1 relative flex items-center justify-center px-4">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src={BG_IMG} 
+            alt="Background" 
+            className="w-full h-full object-cover"
           />
-        )}
-        <input
-          ref={email}
-          type="text"
-          placeholder="Email"
-          className="w-full p-3 mb-4 bg-gray-700 rounded-lg text-white"
-          required
-        />
-        <input
-          ref={password}
-          type="password"
-          placeholder="Password"
-          className="w-full p-3 mb-4 bg-gray-700 rounded-lg text-white"
-          required
-        />
-        {!isSignInForm && (
-          <input
-            ref={confirmPassword}
-            type="password"
-            placeholder="Confirm Password"
-            className="w-full p-3 mb-4 bg-gray-700 rounded-lg text-white"
-            required
-          />
-        )}
-        {errorMessage && (
-          <p className="text-red-500 font-bold mb-4">{errorMessage}</p>
-        )}
-        <button
-          onClick={handleButtonClick}
-          className="w-full p-3 bg-red-700 rounded-lg text-white font-bold"
+          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        </div>
+
+        {/* Form */}
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="relative w-full md:w-1/3 max-w-md bg-black bg-opacity-80 p-6 md:p-8 rounded-lg text-white"
         >
-          {isSignInForm ? "Sign In" : "Sign Up"}
-        </button>
-        <p className="mt-4 text-center">
-          {isSignInForm ? (
-            <span>
-              New to Netflix?{" "}
-              <span
-                className="text-red-500 cursor-pointer"
-                onClick={toggleSignInForm}
-              >
-                Sign up
-              </span>{" "}
-              now
-            </span>
-          ) : (
-            <span>
-              Already have an account?{" "}
-              <span
-                className="text-red-500 cursor-pointer"
-                onClick={toggleSignInForm}
-              >
-                Sign in
-              </span>
-            </span>
+          <h1 className="text-2xl md:text-3xl font-bold mb-6">
+            {isSignInForm ? "Sign In" : "Sign Up"}
+          </h1>
+
+          {!isSignInForm && (
+            <input
+              ref={username}
+              type="text"
+              placeholder="Username"
+              className="w-full p-3 mb-4 bg-gray-700 rounded-lg text-white outline-none focus:ring-2 focus:ring-red-500"
+              required
+            />
           )}
-        </p>
-      </form>
+
+          <input
+            ref={email}
+            type="email"
+            placeholder="Email"
+            className="w-full p-3 mb-4 bg-gray-700 rounded-lg text-white outline-none focus:ring-2 focus:ring-red-500"
+            required
+          />
+
+          <input
+            ref={password}
+            type="password"
+            placeholder="Password"
+            className="w-full p-3 mb-4 bg-gray-700 rounded-lg text-white outline-none focus:ring-2 focus:ring-red-500"
+            required
+          />
+
+          {!isSignInForm && (
+            <input
+              ref={confirmPassword}
+              type="password"
+              placeholder="Confirm Password"
+              className="w-full p-3 mb-4 bg-gray-700 rounded-lg text-white outline-none focus:ring-2 focus:ring-red-500"
+              required
+            />
+          )}
+
+          {errorMessage && (
+            <p className="text-red-500 font-bold mb-4">{errorMessage}</p>
+          )}
+
+          <button
+            onClick={handleButtonClick}
+            className="w-full p-3 bg-red-600 hover:bg-red-700 transition-colors rounded-lg text-white font-bold"
+          >
+            {isSignInForm ? "Sign In" : "Sign Up"}
+          </button>
+
+          <p className="mt-6 text-center text-gray-300">
+            {isSignInForm ? (
+              <span>
+                New to Netflix?{" "}
+                <span
+                  className="text-red-500 cursor-pointer hover:underline"
+                  onClick={toggleSignInForm}
+                >
+                  Sign up
+                </span>{" "}
+                now
+              </span>
+            ) : (
+              <span>
+                Already have an account?{" "}
+                <span
+                  className="text-red-500 cursor-pointer hover:underline"
+                  onClick={toggleSignInForm}
+                >
+                  Sign in
+                </span>
+              </span>
+            )}
+          </p>
+        </form>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;
