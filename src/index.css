@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .animate-delayed-spin {
+    animation: spin 1s linear infinite 0.5s;
+  }
+}
