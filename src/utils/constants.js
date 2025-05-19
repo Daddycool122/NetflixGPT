@@ -5,7 +5,7 @@ export const BG_IMG = "https://assets.nflxext.com/ffe/siteui/vlv3/e3e9c31f-aa15-
 export const API_OPTIONS = {method: 'GET', 
     headers: {
     accept: 'application/json',
-    Authorization:'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxYWE4ZjhlOWI1ZTJiZjEwZmYzMzNhMTM1OWU4NjVjNiIsIm5iZiI6MTczOTkxMTc2OS41NzUsInN1YiI6IjY3YjRmMjU5ZWUwNzU3OTY5MzU4MzhmYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ffEG1FksAOlCRDRO2y_lgQJH7kd2rGi9tyh7QoVXCyo'
+    Authorization:'Bearer '+ import.meta.env.VITE_TMDB_API_KEY
 }};
 
 export const IMG_CDN = `https://image.tmdb.org/t/p/w500/`
@@ -16,4 +16,3 @@ export const SUPPORTED_LANGUAGES = [
 {identfier:'spanish', name:'Spanish'},
 ]
 
-export const GEMINIAI_KEY = 'AIzaSyC64vGY0YJTUEjLMVa9LBUCRuQsAl1VufY'

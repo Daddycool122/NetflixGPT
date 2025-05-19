@@ -50,11 +50,7 @@ const GptSearchBar = () => {
   return (
     <div className="relative flex flex-col items-center justify-center min-h-[60vh] py-10 sm:py-20">
       <div className="absolute inset-0 -z-10">
-        <img
-          src={BG_IMG}
-          alt="Background"
-          className="w-full h-full object-cover"
-        />
+        
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
